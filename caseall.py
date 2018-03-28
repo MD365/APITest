@@ -20,7 +20,10 @@ def demo(i):
         code = apiresult.status_code
         assert code == 200, '▇▇▇请求失败！'+'  '+'code:'+str(code)+'  '+'url='+CaseUrl
         pam = json.loads(apiresult.text)
-        apitest.Assert(pam, Result)
+       # apitest.Assert(pam, Result)
+
+        apitest.Assert(Result,pam)
+
 
     setattr(case, '__doc__', str(i[1]))
     return case
@@ -32,12 +35,12 @@ def testall(num):
 
 if __name__ == "__main__":
     apitest = tool.APiTool()
-    xlsFile = r"D:\myapi_test2\apicase.xls"  # 文件路径
+    xlsFile = "/Users/mada/APITest/apicase.xls"  # 文件路径
     sheetlist1 = apitest.xlsee(xlsFile)
     testall(sheetlist1)
     suit = unittest.makeSuite(Test)
     now = time.strftime("%Y-%m-%d %H_%M_%S", time.localtime(time.time()))
-    filename = "D:\\myapi_test2\\report\\"+now+'result.html' #定义个报告存放路径，支持相对路径。
+    filename = "/Users/mada/APITest/report/"+now+'result.html' #定义个报告存放路径，支持相对路径。
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='自动化测试报告', description='XX平台V1.0')
     runner.run(suit)
