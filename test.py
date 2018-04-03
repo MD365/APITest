@@ -31,8 +31,11 @@ print (url)
 postData = rows[5]
 response = requests.post(url,data=postData)
 
-a = response.xml
+b= requests.get(url='http://www.rainsmoon.com/')
 
-
-print (a)
+url = 'http://and.cbchot.com/api/server_config/'
+headers={'content-type':'application/x-www-form-urlencoded','sessionid':'ff3fdcc2ed6647c2afdf12c82fff6328','X-Client':'sdk=4.4.4;screenSize=1080*1920;type=MI+3W;imei=865002028154896;imsi=460010910615030;cell_id=;version=1.1.00.17.15;mac=14:f6:5a:b6:20:c9;rootPath=%2Fstorage%2Femulated%2F0;rn=0567375437;'}
+payload={"password": "ff86bb0684b4fe3b22e678eadb4af719","account":"118688"}
+a=requests.post(url,headers=headers)
+print (a.text)
 
